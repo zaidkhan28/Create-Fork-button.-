@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="qrcode.css">
+</head>
+<body>
+    <div class="main">
+        <p>Enter your text or url</p>
+        <input type="text" placeholder="Text or url" id="qrtext">
+        <div id="imgbox">
+            <img src="" id="qrimage">
+        </div>
+        <button onclick="apple()">Generate our qr</button>
+    </div>
+
+    <script>
+        const qrtext=document.getElementById("qrtext")
+        const imgbox=document.getElementById("imgbox")
+        const qrimage=document.getElementById("qrimage")
+
+        function apple(){
+        if(qrtext.value.length>0){
+        qrimage.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+qrtext.value;
+        imgbox.classList.add("nine");
+        }else{qrtext.classList.add("error");
+
+            setTimeout(()=>{
+                qrtext.classList.add("error");
+            },1000)
+        }
+
+        }
+
+
+    </script>
+</body>
+</html>
